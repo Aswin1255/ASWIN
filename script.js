@@ -84,8 +84,12 @@ const roles = [
   'SOC Analyst',
   'Ethical Hacker',
   'Threat Hunter',
-  'Red Team Operator',
-  'Incident Responder'
+  //'Red Team Operator',
+  'Incident Responder',
+  'Network Engineer',
+  'Network Technician',
+  'Network Admin',
+  'IT Support'
 ];
 let roleIdx = 0, charIdx = 0, deleting = false;
 const typedEl = document.getElementById('typedText');
