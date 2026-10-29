@@ -80,16 +80,16 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
 
 // ── TYPED TEXT ──
 const roles = [
+  'Network Engineer',
+  //'Network Technician',
+  'Network Admin',
+  'IT Support',
   'Penetration Tester',
   'SOC Analyst',
   'Ethical Hacker',
   'Threat Hunter',
   //'Red Team Operator',
-  'Incident Responder',
-  //'Network Engineer',
-  //'Network Technician',
-  //'Network Admin',
-  //'IT Support'
+  'Incident Responder'
 ];
 let roleIdx = 0, charIdx = 0, deleting = false;
 const typedEl = document.getElementById('typedText');
