@@ -78,30 +78,52 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   navLinks.classList.remove('open');
 }));
 
+
 // ── TYPED TEXT ──
 const roles = [
   'Network Engineer',
-  //'Network Technician',
   'Network Admin',
   'IT Support',
   'Penetration Tester',
   'SOC Analyst',
   'Ethical Hacker',
   'Threat Hunter',
-  //'Red Team Operator',
   'Incident Responder'
 ];
-let roleIdx = 0, charIdx = 0, deleting = false;
+
+let roleIdx = 0;
+let charIdx = 0;
+let deleting = false;
+
 const typedEl = document.getElementById('typedText');
 
 function type() {
   const current = roles[roleIdx];
-  typedEl.textContent = deleting ? current.slice(0, charIdx--) : current.slice(0, charIdx++);
-  if (!deleting && charIdx > current.length) { deleting = true; setTimeout(type, 1400); return; }
-  if (deleting && charIdx < 0)  { deleting = false; roleIdx = (roleIdx + 1) % roles.length; }
-  setTimeout(type, deleting ? 45 : 80);
+
+  if (deleting) {
+    charIdx--;
+  } else {
+    charIdx++;
+  }
+
+  typedEl.textContent = current.substring(0, charIdx);
+
+  let delay = deleting ? 45 : 80;
+
+  if (!deleting && charIdx === current.length) {
+    deleting = true;
+    delay = 1400; // Pause before deleting
+  } else if (deleting && charIdx === 0) {
+    deleting = false;
+    roleIdx = (roleIdx + 1) % roles.length;
+    delay = 300; // Short pause before next role
+  }
+
+  setTimeout(type, delay);
 }
+
 type();
+
 
 // ── INTERSECTION OBSERVER ──
 const observer = new IntersectionObserver(entries => {
